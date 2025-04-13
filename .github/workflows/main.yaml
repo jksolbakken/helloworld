@@ -9,6 +9,8 @@ on:
 
 jobs:
   set-version:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.set-version.outputs.version }}
@@ -22,6 +24,8 @@ jobs:
 
   build:
     name: Build and push
+    needs:
+      - set-version
     runs-on: ubuntu-latest
     permissions:
       contents: read
