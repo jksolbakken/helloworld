@@ -54,7 +54,11 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
       - name: debug
-        run: "echo tag: $TAG"
+        run: "echo tag: ${{ needs.jobs.set-version.outputs.version }}"
         env:
           TAG: ${{ needs.jobs.set-version.outputs.version }}
-      
+      - name: Build OCI
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # ratchet:docker/build-push-action@v6
+        with:
+          push: false
+          tags: "ghcr.io/jksolbakken/helloworld:${{ needs.jobs.set-version.outputs.version }}"
