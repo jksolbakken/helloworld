@@ -20,6 +20,7 @@ jobs:
         run: |
           echo Faking a Semantic Version
           echo "version=1.$(date "+%Y%m%d%H%M%S")" >> ${GITHUB_OUTPUT}
+      - run: echo "${{ toJSON(steps.set-version.outputs) }}"
 
   build:
     name: Build and push
@@ -36,6 +37,7 @@ jobs:
     outputs:
       tag: "${{ steps.docker-build-push.outputs.IMAGE }}"
     steps:
+      - run: echo "${{ toJSON(needs.jobs.set-version.outputs) }}"
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # ratchet:actions/checkout@v4
         with:
           persist-credentials: false
