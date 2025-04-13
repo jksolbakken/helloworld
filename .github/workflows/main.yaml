@@ -37,7 +37,7 @@ jobs:
     outputs:
       tag: "${{ steps.docker-build-push.outputs.IMAGE }}"
     steps:
-      - run: echo "${{ toJSON(needs.jobs.set-version.outputs) }}"
+      - run: echo "${{ toJSON(needs.set-version.outputs) }}"
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # ratchet:actions/checkout@v4
         with:
           persist-credentials: false
