@@ -53,10 +53,11 @@ jobs:
         uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # ratchet:docker/setup-buildx-action@v3
         with:
           platforms: linux/amd64,linux/arm64
-      - name: debug
-        run: |
-          echo "tag: ${{ needs.set-version.outputs.version }}"
-          echo "tag: $TAG"
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: ghcr.io/jksolbakken/helloworld:${{ env.TAG }}
         env:
           TAG: ${{ needs.set-version.outputs.version }}
       
