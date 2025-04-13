@@ -56,4 +56,4 @@ jobs:
           push: false
           tags: "ghcr.io/jksolbakken/helloworld:${TAG}"
         env:
-          TAG: ${{ needs.set-version.outputs.version }}
+          TAG: ${{ needs.jobs.set-version.outputs.version }}
