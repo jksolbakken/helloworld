@@ -54,7 +54,9 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
       - name: debug
-        run: "echo tag: ${{ needs.jobs.set-version.outputs.version }}"
+        run: |
+          "echo tag: ${{ needs.jobs.set-version.outputs.version }}"
+          "echo tag: $TAG"
         env:
           TAG: ${{ needs.jobs.set-version.outputs.version }}
       
