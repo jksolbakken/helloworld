@@ -41,8 +41,9 @@ jobs:
         with:
           cosign-release: 'v2.5.0'
       - name: Verify images
-        run: cosign verify --certificate-identity ${{ env.IMG_IDENTITY }} --certificate-oidc-issuer ${{ env.IMG_ISSUER }} ${{ env.BUILDER_IMG }}
-        run: cosign verify --certificate-identity ${{ env.IMG_IDENTITY }} --certificate-oidc-issuer ${{ env.IMG_ISSUER }} ${{ env.RUNNER_IMG }}
+        run: |
+          cosign verify --certificate-identity ${{ env.IMG_IDENTITY }} --certificate-oidc-issuer ${{ env.IMG_ISSUER }} ${{ env.BUILDER_IMG }}
+          cosign verify --certificate-identity ${{ env.IMG_IDENTITY }} --certificate-oidc-issuer ${{ env.IMG_ISSUER }} ${{ env.RUNNER_IMG }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 # ratchet:docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
