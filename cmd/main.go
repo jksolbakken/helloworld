@@ -7,6 +7,10 @@ import (
 )
 
 func main() {
+    http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+    })
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("content-type", "text/plain")
 		_, err := w.Write([]byte("Hello world!"))	
@@ -18,3 +22,4 @@ func main() {
 	fmt.Println("Starting...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
+
