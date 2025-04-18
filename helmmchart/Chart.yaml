@@ -1,0 +1,9 @@
+apiVersion: v2
+name: helloworld
+description: A Helm chart for installing the helloworld app
+
+type: application
+
+version: 0.1.0
+
+appVersion: "willbeoverridden"
