@@ -1,3 +1,3 @@
 helloworld:
-	go build -o bin/helloworld cmd/helloworld/*.go
+	go build -o bin/helloworld cmd/main.go
 
