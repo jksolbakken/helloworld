@@ -11,6 +11,8 @@ func main() {
 		w.WriteHeader(http.StatusOK)
     })
 
+	http.Handle("/fourohfour", http.NotFoundHandler())
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("content-type", "text/plain")
 		_, err := w.Write([]byte("Hello world!"))	
