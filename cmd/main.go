@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"net/http"
 )
 
@@ -14,8 +15,14 @@ func main() {
 	http.Handle("/fourohfour", http.NotFoundHandler())
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		hostname, err := os.Hostname()
+		if err != nil {
+			panic(err)
+		}
+
 		w.Header().Set("content-type", "text/plain")
-		_, err := w.Write([]byte("Hello world!"))	
+		greeting := fmt.Sprintf("Hello world! I run on %s", hostname)
+		_, err = w.Write([]byte(greeting))	
 		if err != nil {
 			log.Printf("http write error: %v\n", err)
 		}

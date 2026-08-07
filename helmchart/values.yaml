@@ -1,0 +1,9 @@
+appName: helloworld
+namespace: default
+svcport: 8080
+containerport: 8080
+replicas: 2
+image:
+  name: jksolbakken/helloworld 
+  tag: 1.20260108214652
+        
