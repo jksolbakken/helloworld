@@ -52,7 +52,7 @@ jobs:
           cosign-release: 'v3.1.3'
       - name: Verify images
         run: |
-          cosign verify --certificate-identity ${ IMG_IDENTITY } --certificate-oidc-issuer ${IMG_ISSUER} ${BUILDER_IMG}
+          cosign verify --certificate-identity ${IMG_IDENTITY} --certificate-oidc-issuer ${IMG_ISSUER} ${BUILDER_IMG}
           cosign verify --certificate-identity ${IMG_IDENTITY} --certificate-oidc-issuer ${IMG_ISSUER} ${RUNNER_IMG}
         env:
           IMG_IDENTITY: ${{ env.IMG_IDENTITY }}
